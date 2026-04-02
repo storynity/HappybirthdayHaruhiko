@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Happy Birthday</title>
+  <style>
+  body {
+    background-color: #F8F6F0;
+    color: #255387;
+    margin: 0;
+  }
+
+
+  .scene {
+  min-height: 100vh;   /* 画面いっぱい */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+.serif {
+  font-family: 'Zen Old Mincho', serif;
+    }
+
+.gothic {
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+.playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+.accent {
+    color: #FFB169;
+  }
+
+  .hidden {
+  display: none;
+}
+
+  h1 {
+    font-size: 8vw;
+    letter-spacing: 3px;
+  }
+
+  h2 {
+  font-size: 4vw;
+  margin-top: 10px;
+}
+
+  p {
+    font-size: 4vw;
+    margin-top: 20px;
+  }
+
+#fake404 h1 {
+  font-size: 13vw;
+  margin: 0;
+}
+
+#fake404 h2 {
+  margin-top: 10px;
+}
+
+#fake404 p {
+  margin-top: 30px;
+}
+
+  @media (min-width: 768px) {
+  h1 {
+    font-size: 48px;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
+#loading p{
+  font-size:24px;
+  letter-spacing:3px;
+  animation: fade 1.5s infinite;
+}
+
+@keyframes fade{
+  0%{opacity:0.2;}
+  50%{opacity:1;}
+  100%{opacity:0.2;}
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  margin: 20px;
+  cursor: pointer;
+  color: #255387;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+button::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 1px;
+  background: #FFB169;
+  transition: width 0.3s ease;
+  margin-top: 5px;
+}
+
+button:hover {
+  color: #FFB169;
+}
+
+button:hover::after {
+  width: 100%;
+}
+
+.title-wrap{
+  position: relative;
+}
+
+.title{
+  font-size: 8vw;
+  letter-spacing: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 装飾の丸 */
+.title-wrap::before,
+.title-wrap::after{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:#FFB169;
+  opacity:0.2;
+}
+
+.title-wrap::before{
+  top:-40px;
+  left:-40px;
+}
+
+.title-wrap::after{
+  bottom:-40px;
+  right:-40px;
+}
+
+.title span{
+  display:inline-block;
+  animation: pop 0.6s ease forwards;
+}
+
+@keyframes pop{
+  0%{
+    transform: scale(0.8);
+    opacity:0;
+  }
+  100%{
+    transform: scale(1);
+    opacity:1;
+  }
+}
+
+.decor{
+  position: fixed;   /* ← ここがポイント */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;       /* 背景に回す */
+  overflow: hidden;
+}
+
+.circle{
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+  filter: blur(1px);
+}
+.circle1{
+  width: 120px;
+  height: 120px;
+  background: #feb876;
+  top: 8%;
+  left: 10%;
+  animation: float 5s ease-in-out infinite;
+}
+
+.circle2{
+  width: 130px;
+  height: 130px;
+  background: #fec988;
+  top: 75%;
+  left: 75%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle3{
+  width: 80px;
+  height: 80px;
+  background: #FFB169;
+  top: 36%;
+  left: 92%;
+  animation: float 5s ease-in-out infinite;
+}
+
+.circle4{ 
+  width:140px; 
+  height:140px; 
+  background: #fab76f;
+  top:88%; 
+  left:25%; 
+  animation: float 8s ease-in-out infinite;
+}
+
+.circle5{ 
+  width:70px;
+  height:70px;
+  background:#ffa857;
+  top:65%; 
+  left:5%;
+  animation: float 4s ease-in-out infinite; 
+}
+
+.circle6{
+  width:70px;
+  height:70px;
+  background:#FFD6A5;
+  top:13%;
+  left:80%;
+  animation: float 4s ease-in-out infinite; 
+}
+
+.circle7{
+  width:180px;
+  height:180px;
+  background:#fdbd81;
+  top:45%;
+  left:-5%;
+  animation: float 10s ease-in-out infinite;
+}
+
+.circle8{
+  width:170px;
+  height:170px;
+  background:#FFB169;
+  top:-5%;
+  left:70%;
+  animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%{ transform: translateY(0);}
+  50%{ transform: translateY(-20px);}
+  100%{ transform: translateY(0);}
+}
+
+.star{
+  position: absolute;
+  opacity: 0.9;
+  display: inline-block;
+  transform-origin: center;
+  animation: rotateStar 3s ease-in-out infinite;
+}
+
+.star1{ top:5%; left:8%; font-size:18px; color:#FFD84D; }
+.star2{ top:30%; left:75%; font-size:22px; color:#FFE066; }
+.star3{ top:65%; left:85%; font-size:16px; color:#FFD84D; }
+.star4{ top:80%; left:25%; font-size:20px; color:#FFED99; }
+.star5{ top:20%; left:35%; font-size:17px; color:#FFE066; }
+.star6{ top:8%;  left:88%; font-size:21px; color:#FFD84D; }
+.star7{ top:55%; left:10%; font-size:19px; color:#FFE066; }
+.star8{ top:85%; left:65%; font-size:18px; color:#ffe678; }
+
+@keyframes rotateStar{
+  0%{
+    transform: rotate(0deg);
+  }
+  25%{
+    transform: rotate(30deg);
+  }
+  50%{
+    transform: rotate(0deg);
+  }
+  75%{
+    transform: rotate(-30deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+
+.photo {
+  width: 80%;
+  max-width: 600px;
+  margin: 80px auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:60px;
+  padding:120px 10%;
+}
+
+.story.reverse{
+  flex-direction: row-reverse;
+}
+
+.photo{
+  width:45%;
+  max-width:500px;
+  border-radius:12px;
+}
+
+.message{
+  width:40%;
+  font-size:20px;
+  line-height:1.8;
+}
+
+@media (max-width:768px){
+
+.story{
+  flex-direction:column;
+  text-align:center;
+}
+
+.story.reverse{
+  flex-direction:column;
+}
+
+.photo{
+  width:90%;
+}
+
+.message{
+  width:90%;
+}
+
+}
+
+.memories{
+  width: 100%;
+  padding: 80px 0;
+}
+
+.memory{
+  text-align: center;
+  margin: 100px 0;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+/* ふわっと表示 */
+.memory.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.memory img{
+  width: 80%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+.memory p{
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.divider{
+  width: 50%;
+  height: 2px;
+  margin: 120px auto;
+  background: linear-gradient(to right, transparent, #FFB169, transparent);
+  filter: blur(0.3px);   /* ←ほんの少し柔らかく */
+}
+
+.scroll-hint{
+  margin-top: 40px;
+  font-size: 20px;
+  opacity: 0;
+
+  animation:
+    fadeIn 1.5s ease forwards 1.5s,
+    bounce 2s infinite 2s;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce{
+  0%, 100%{ transform: translateY(0); }
+  50%{ transform: translateY(8px); }
+}
+
+.letter-section{
+  text-align:center;
+  padding:150px 20px;
+  position:relative;
+}
+
+/* 封筒 */
+.envelope{
+  width:120px;
+  height:80px;
+  margin:0 auto;
+  position:relative;
+  cursor:pointer;
+}
+
+/* 下の部分 */
+.body{
+  width:100%;
+  height:100%;
+  background:#FFD6A5;
+  border-radius:5px;
+  position:relative;
+  z-index:1; 
+  overflow: hidden;
+}
+
+
+.flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:50%;
+  background:#ffa857;
+
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+  transform-origin: top;
+  transition: transform 0.6s ease 0.3s;
+
+  z-index:2;
+}
+
+.seal{
+  position:absolute;
+  top:43%;
+  left:43%;
+  transform:translateX(-50%, -50%);
+
+  width:16px;
+  height:16px;
+  background:#fff;
+  border-radius:50%;
+
+  z-index:3;
+  transition: all 0.4s ease;
+}
+
+@media (max-width:768px){
+  .seal{
+    top:45%;
+    left:50%;
+    transform:translate(-50%, -110%);
+  }
+}
+
+.envelope.open .seal{
+  opacity:0;
+  transform:translate(-50%, -50%) scale(0.3);
+}
+
+.click-hint{
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.7;
+  animation: fadeIn 1s ease forwards 1s;
+}
+
+/* 開いた状態 */
+.envelope.open .flap{
+  transform: rotateX(180deg);
+}
+
+/* 手紙 */
+.letter{
+  width: 90%;
+  max-width: 600px; 
+  margin:0 auto;
+  background:#fff;
+  padding:30px;
+  border-radius:10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+  position:relative;
+  top:-40px;
+
+  transform: translateY(100px);
+  opacity:0;
+  transition: all 1s ease;
+  z-index:10; 
+}
+
+
+/* 出てくる */
+.letter.show{
+  transform: translateY(0);
+  opacity:1;
+}
+
+.line{
+  opacity: 0;
+  transform: translateY(10px);
+  margin: 12px 0;
+  letter-spacing: 1px;
+}
+
+/* 表示 */
+.line.show{
+  animation: textFade 0.8s forwards;
+}
+
+@keyframes textFade{
+  to{
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+.click-hint{
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.7;
+
+  animation:
+    fadeIn 1s ease forwards 1s,
+    bounce 2s infinite 1.5s;
+}
+
+</style>
+</head>
+<body>
+ <!-- イントロ画面 -->
+  <section class="scene" id="intro">
+    <div>
+      <h1 class="serif ">Ready for a little surprise?</h1>
+      <button onclick="startLoading()">Of course!</button>
+      <button onclick="goTo404()">Not today</button>
+    </div>
+  </section>
+
+   <!-- Loading画面 -->
+<section class="scene hidden" id="loading">
+  <p class="serif">Loading...</p>
+</section>
+
+   <!-- 本編 -->
+  <section class="hidden" id="main">
+
+    <!-- 丸 -->
+    <div class="decor">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+    <div class="circle circle4"></div>
+    <div class="circle circle5"></div>
+    <div class="circle circle6"></div>
+    <div class="circle circle7"></div>
+    <div class="circle circle8"></div>
+  </div>
+
+  <!-- Happy Birthday -->
+  <section class="scene">
+
+  <!-- 装飾 -->
+  <div class="stars">
+
+    <!-- 星 -->
+    <div class="star star1">★</div>
+    <div class="star star2">★</div>
+    <div class="star star3">★</div>
+    <div class="star star4">★</div>
+    <div class="star star5">★</div>
+    <div class="star star6">★</div>
+    <div class="star star7">★</div>
+    <div class="star star8">★</div>
+
+  </div>
+
+  <h1 class="serif title fade-in">
+    Happy<br>Birthday!!
+  </h1>
+
+  <p class="serif scroll-hint">▼ scroll ▼</p>
+
+</section>
+
+
+  <!-- 好きな顔シリーズ -->
+<section class="story">
+
+  <img src="photos/face 萌え袖.jpg" class="photo fade">
+
+  <p class="message fade">
+    サプライズしてくれた後！<br>
+    目がきゅるきゅるしててかわいい！
+  </p>
+
+</section>
+
+<section class="story reverse">
+  
+  <img src="photos/face どアップ.jpg" class="photo fade">
+
+  <p class="message fade">
+    はるひこは和装が大優勝すぎです。
+  </p>
+
+</section>
+
+<section class="story">
+  
+  <img src="photos/face 驚き.jpg" class="photo fade">
+
+  <p class="message fade">
+    びっくりしててかわちい！
+  </p>
+
+</section>
+
+<section class="story reverse">
+  
+  <img src="photos/face 寝顔.jpg" class="photo fade">
+
+  <p class="message fade">
+    寝顔しか勝たん！<br>
+    保護したいくらいかわいいいい
+  </p>
+
+</section>
+
+<section class="story">
+  
+  <img src="photos/face 桜島.jpg" class="photo fade">
+
+  <p class="message fade">
+    この写真結構おきにいり！<br>
+    ぎゅーーってしたくなる！
+  </p>
+
+</section>
+
+  <!-- ここに移動！！ -->
+<div class="divider"></div>
+
+  <!-- ツーショット -->
+
+  <section class="memories">
+
+  <div class="memory">
+    <img src="photos/two 初デート.jpg" class="photo fade">
+    <p>この日ほんとに楽しかった！<br>
+       はじめてデートで帰りたくないって思ったの！
+    </p>
+  </div>
+
+  <div class="memory">
+    <img src="photos/two vaundy.jpg" class="photo fade">
+    <p>一緒にいるだけでたのしい！</p>
+  </div>
+
+  <div class="memory">
+    <img src="photos/two 夏祭り.jpg" class="photo fade">
+    <p>小学生ぶりに夏祭りで浴衣着た！<br>
+       素直にかわいいっていってくれるところ好き
+    </p>
+  </div>
+
+  <div class="memory">
+    <img src="photos/two クリスマスマーケット.jpg" class="photo fade">
+    <p>いつも楽しい！しあわせ！</p>
+  </div>
+
+  <div class="memory">
+    <img src="photos/two お団子.jpg" class="photo fade">
+    <p>気づいたら写真がいっぱい！<br>
+       写真とかBerealにつきあってくれてありがと
+    </p>
+  </div>
+
+  <div class="memory">
+    <img src="photos/two 黒川温泉.jpg" class="photo fade">
+    <p>最高のクリスマスだった！</p>
+  </div>
+
+  <div class="memory">
+    <img src="photos/two 稲佐山.jpg" class="photo fade">
+    <p>このあとお店が開いて無くて<br>
+      ちょっと機嫌悪くなっちゃってごめんね</p>
+  </div>
+
+  <div class="memory">
+    <img src="photos/two バニラズ.jpg" class="photo fade">
+    <p>はるひことバニラズのライブ行けてうれしかった！</p>
+  </div>
+
+</section>
+
+<section class="letter-section">
+
+  <!-- 封筒 -->
+  <div class="envelope" onclick="openLetter()">
+    <div class="flap"></div>
+    <div class="body"></div>
+    <div class="seal"></div>
+  </div>
+
+
+  <p class="click-hint">↑ click ↑</p>
+
+
+  <!-- 手紙 -->
+  <div class="letter" id="letter">
+    <p class="line">お誕生日おめでとう。</p>
+    <p class="line">いつも一緒にいてくれてありがとう。</p>
+    <p class="line">こうやって過ごせてる時間が幸せです。</p>
+    <p class="line">これからもたくさん思い出つくろうね。</p>
+  </div>
+
+</section>
+
+</section>
+
+   <!-- 404ページ -->
+  <section class="scene hidden" id="fake404">
+    <h1 class="serif">404</h1>
+<h2 class="serif">Not Found</h2>
+<p class="serif">
+  There’s only one choice left for you.
+</p>
+<button onclick="location.reload()">Choose again</button>
+  </section>
+
+<script>
+
+function startLoading() {
+
+  // introを消す
+  document.getElementById("intro").style.display = "none";
+
+  // loading表示
+  document.getElementById("loading").classList.remove("hidden");
+
+  // 3.5秒後にmain表示
+  setTimeout(function() {
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("main").classList.remove("hidden");
+  }, 3500);
+
+}
+
+function goTo404() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("fake404").classList.remove("hidden");
+}
+
+const faders = document.querySelectorAll('.fade');
+
+const appearOptions = {
+  threshold: 0.2
+};
+
+const appearOnScroll = new IntersectionObserver(function(
+  entries,
+  appearOnScroll
+) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      return;
+    } else {
+      entry.target.classList.add("show");
+      appearOnScroll.unobserve(entry.target);
+    }
+  });
+},
+appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+const memories = document.querySelectorAll('.memory');
+
+window.addEventListener('scroll', () => {
+  memories.forEach(memory => {
+    const rect = memory.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight - 100) {
+      memory.classList.add('show');
+    }
+  });
+});
+  
+function openLetter(){
+
+  const envelope = document.querySelector(".envelope");
+  const letter = document.getElementById("letter");
+  const lines = document.querySelectorAll(".line");
+
+  // ① シール消える
+  envelope.classList.add("open");
+
+  // ② フタ開いたあとに手紙
+  setTimeout(()=>{
+    letter.classList.add("show");
+  },900);
+
+  // ③ 文字（ゆっくり）
+  lines.forEach((line, index)=>{
+    setTimeout(()=>{
+      line.classList.add("show");
+    }, 1600 + index * 1500); // ←ゆっくりにした
+  });
+}
+</script>
+
+</body>
+</html>
