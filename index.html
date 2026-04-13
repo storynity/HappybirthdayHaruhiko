@@ -59,7 +59,29 @@
     margin-top: 20px;
   }
 
-  @media (max-width:768px){
+
+#fake404 h1 {
+  font-size: 13vw;
+  margin: 0;
+}
+
+#fake404 h2 {
+  margin-top: 10px;
+}
+
+#fake404 p {
+  margin-top: 30px;
+}
+
+
+/* PC用 */
+@media (min-width: 768px) {
+  h1 { font-size: 48px; }
+  p  { font-size: 20px; }
+}
+
+/* 👇これを一番最後に置く！ */
+@media (max-width:768px){
 
   h1{
     font-size: 7vw;
@@ -81,29 +103,6 @@
     font-size:18px;
   }
 
-}
-
-#fake404 h1 {
-  font-size: 13vw;
-  margin: 0;
-}
-
-#fake404 h2 {
-  margin-top: 10px;
-}
-
-#fake404 p {
-  margin-top: 30px;
-}
-
-  @media (min-width: 768px) {
-  h1 {
-    font-size: 48px;
-  }
-
-  p {
-    font-size: 20px;
-  }
 }
 
 #loading p{
@@ -371,6 +370,11 @@ button:hover::after {
   margin:40px auto;
   display:block;
   border-radius:12px;
+  flex-shrink: 0;
+}
+
+.story img{
+  height:auto;
 }
 
 @media (max-width:768px){
