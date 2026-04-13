@@ -358,9 +358,8 @@ button:hover::after {
 
   .photo{
     width:90%;
-    height:auto;        /* ←これ絶対入れる */
-    aspect-ratio: 3 / 4; /* ←これが効く */
-    object-fit: cover;
+    height:auto;
+    object-fit: contain; /* ← coverをやめてcontainにする */
   }
 
 }
