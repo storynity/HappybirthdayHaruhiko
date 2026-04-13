@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&family=Zen+Maru+Gothic&display=swap&subset=japanese" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&family=Zen+Maru+Gothic&family=Playfair+Display&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -24,15 +24,16 @@
 }
 
 
-.serif {
-  font-family: 'Zen Old Mincho', serif;
-    }
-
-.gothic {
-  font-family: 'Zen Maru Gothic', sans-serif;
+.serif{
+  font-family:'Zen Old Mincho', serif;
 }
-.playfair {
-    font-family: 'Playfair Display', serif;
+
+.gothic{
+  font-family:'Zen Maru Gothic', sans-serif;
+}
+
+.playfair{
+  font-family:'Playfair Display', serif;
 }
 
 .accent {
@@ -353,6 +354,17 @@ button:hover::after {
   border-radius:12px;
 }
 
+@media (max-width:768px){
+
+  .photo{
+    width:90%;
+    height:auto;        /* ←これ絶対入れる */
+    aspect-ratio: 3 / 4; /* ←これが効く */
+    object-fit: cover;
+  }
+
+}
+
 .message{
   width:40%;
   font-size:20px;
@@ -491,25 +503,15 @@ button:hover::after {
 
 .seal{
   position:absolute;
-  top:43%;
-  left:43%;
-  transform:translateX(-50%, -50%);
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
 
   width:16px;
   height:16px;
   background:#fff;
   border-radius:50%;
-
   z-index:3;
-  transition: all 0.4s ease;
-}
-
-@media (max-width:768px){
-  .seal{
-    top:45%;
-    left:50%;
-    transform:translate(-50%, -110%);
-  }
 }
 
 .envelope.open .seal{
@@ -532,7 +534,7 @@ button:hover::after {
 /* 手紙 */
 .letter{
   width: 90%;
-  max-width: 600px; 
+  max-width: 800px; 
   margin:0 auto;
   background:#fff;
   padding:30px;
@@ -540,7 +542,8 @@ button:hover::after {
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 
   position:relative;
-  top:-40px;
+  margin: 40px auto 0;
+  top:0;
 
   transform: translateY(100px);
   opacity:0;
@@ -582,6 +585,17 @@ button:hover::after {
   animation:
     fadeIn 1s ease forwards 1s,
     bounce 2s infinite 1.5s;
+}
+
+.myfont-text {
+  font-family: 'myfont';
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+  font-size: 30px;
+}
+@font-face {
+  font-family: 'myfont';
+  src: url('./Myfont-Regular 2.ttf') format('truetype');
 }
 
 </style>
@@ -744,6 +758,7 @@ button:hover::after {
     <img src="photos/two 稲佐山.jpg" class="photo fade">
     <p>このあとお店が開いて無くて<br>
       ちょっと機嫌悪くなっちゃってごめんね</p>
+      一緒に長崎行けて良かった！
   </div>
 
   <div class="memory">
@@ -768,10 +783,15 @@ button:hover::after {
 
   <!-- 手紙 -->
   <div class="letter" id="letter">
-    <p class="line">お誕生日おめでとう。</p>
-    <p class="line">いつも一緒にいてくれてありがとう。</p>
-    <p class="line">こうやって過ごせてる時間が幸せです。</p>
-    <p class="line">これからもたくさん思い出つくろうね。</p>
+    <p class="myfont-text line">はるひこへ</p>
+    <p class="myfont-text line">誕生日おめでとう。</p>
+    <p class="myfont-text line">はるひこと出会ってから、毎日が前よりずっと楽しくなりました。</p>
+    <p class="myfont-text line">気づいたら写真も思い出もいっぱい増えてて、それがすごく幸せです。</p>
+    <p class="myfont-text line">これからインターンとか幹部とかでお互い忙しくなるかもしれないけど、</p>
+    <p class="myfont-text line">これからも一緒にいられる時間を大切にしたいなって思ってます。</p>
+    <p class="myfont-text line">いつもありがとう。これからもよろしくね。</p>
+    <p class="myfont-text line">大好きだよ。</p>
+    <p class="myfont-text line">まなかより</p>
   </div>
 
 </section>
