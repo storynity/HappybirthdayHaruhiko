@@ -80,30 +80,6 @@
   p  { font-size: 20px; }
 }
 
-@media (max-width:768px){
-
-  h1{
-    font-size: 20px !important;
-  }
-
-  h2{
-    font-size: 16px !important;
-  }
-
-  p{
-    font-size: 12px !important;
-  }
-
-  .message{
-    font-size:12px !important;
-  }
-
-  .myfont-text{
-    font-size:14px !important;
-  }
-
-}
-
 #loading p{
   font-size:24px;
   letter-spacing:3px;
@@ -380,25 +356,12 @@ button:hover::after {
 
 .photo{
   width:100%;
-  max-width:500px;
+  max-width:400px;
   height:auto;
-  margin:40px auto;
+  margin:20px auto;
   display:block;
   border-radius:12px;
   flex-shrink: 0;
-}
-
-.story img{
-  height:auto;
-}
-
-@media (max-width:768px){
-
-  .photo{
-    width:90%;
-    border-radius:12px;
-  }
-
 }
 
 .message{
@@ -410,21 +373,19 @@ button:hover::after {
 @media (max-width:768px){
 
   .story{
-    display:block; /* ←これ追加（超重要） */
+    display:block;
     text-align:center;
     padding:60px 5%;
   }
 
   .story.reverse{
-    display:block; /* ←これも */
+    display:block;
   }
 
-  .story img{
+  .photo{
     width:90%;
-    max-width:400px;
+    max-width:350px; /* ←ここ重要（小さくする） */
     height:auto;
-    display:block;
-    margin:0 auto;
   }
 
   .message{
@@ -432,7 +393,6 @@ button:hover::after {
   }
 
 }
-
 .memories{
   width: 100%;
   padding: 80px 0;
@@ -638,8 +598,29 @@ button:hover::after {
   font-family: 'myfont';
   src: url('./Myfont-Regular 2.ttf') format('truetype');
 }
-*{
-  font-size: 10px !important;
+
+@media (max-width:768px){
+
+  h1{
+    font-size: 9vw; /* ←タイトルはむしろ大きめでOK */
+  }
+
+  h2{
+    font-size: 5vw;
+  }
+
+  p{
+    font-size: 3.8vw;
+  }
+
+  .message{
+    font-size:15px;
+  }
+
+  .myfont-text{
+    font-size:17px;
+  }
+
 }
 
 </style>
@@ -801,8 +782,8 @@ button:hover::after {
   <div class="memory">
     <img src="photos/two 稲佐山.jpg" class="photo fade">
     <p>このあとお店が開いて無くて<br>
-      ちょっと機嫌悪くなっちゃってごめんね</p>
-      一緒に長崎行けて良かった！
+      ちょっと機嫌悪くなっちゃってごめんね<br>
+      一緒に長崎行けて良かった！</p>
   </div>
 
   <div class="memory">
