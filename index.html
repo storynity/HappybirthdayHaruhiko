@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&family=Zen+Maru+Gothic&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -118,6 +118,7 @@ button {
   color: #255387;
   position: relative;
   transition: all 0.3s ease;
+  font-family:'Zen Old Mincho', serif; 
 }
 
 button::after {
@@ -144,9 +145,9 @@ button:hover::after {
 
 .title{
   font-size: 8vw;
-  letter-spacing: 4px;
-  position: relative;
-  z-index: 1;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 1.2;
 }
 
 .intro-title{
@@ -374,6 +375,8 @@ button:hover::after {
   width:40%;
   font-size:20px;
   line-height:1.8;
+  margin: 0 auto;
+  font-family:'Zen Maru Gothic', sans-serif; 
 }
 
 @media (max-width:768px){
@@ -397,6 +400,7 @@ button:hover::after {
   .message{
     width:90%;
     text-align: center; 
+    font-family:'Zen Maru Gothic', sans-serif; 
   }
 
 }
@@ -430,6 +434,7 @@ button:hover::after {
   margin-top: 20px;
   font-size: 18px;
   line-height: 1.8;
+  font-family:'Zen Maru Gothic', sans-serif; 
 }
 
 .divider{
@@ -520,6 +525,8 @@ button:hover::after {
   background:#fff;
   border-radius:50%;
   z-index:3;
+
+  transition: all 0.6s ease;
 }
 
 .envelope.open .seal{
@@ -532,6 +539,7 @@ button:hover::after {
   font-size: 14px;
   opacity: 0.7;
   animation: fadeIn 1s ease forwards 1s;
+  font-family:'Zen Old Mincho', serif; 
 }
 
 /* 開いた状態 */
@@ -589,7 +597,7 @@ button:hover::after {
 .click-hint{
   margin-top: 10px;
   font-size: 14px;
-  opacity: 0.7;
+  opacity: 0.7; 
 
   animation:
     fadeIn 1s ease forwards 1s,
@@ -606,6 +614,22 @@ button:hover::after {
   font-family: 'myfont';
   src: url('./Myfont-Regular 2.ttf') format('truetype');
 }
+
+
+.ending{
+  margin-top: 80px;
+  font-size: 22px;
+  letter-spacing: 2px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.ending.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 @media (max-width:768px){
 
@@ -823,7 +847,7 @@ button:hover::after {
   </div>
 
 
-  <p class="click-hint">↑ click ↑</p>
+  <p class="click-hint">▲ click ▲</p>
 
 
   <!-- 手紙 -->
@@ -838,6 +862,10 @@ button:hover::after {
     <p class="myfont-text line">大好きだよ。</p>
     <p class="myfont-text line">まなかより</p>
   </div>
+
+  <p class="ending serif">
+  これからも、たくさん思い出つくっていこうね！
+</p>
 
 </section>
 
@@ -918,9 +946,14 @@ function openLetter(){
   const envelope = document.querySelector(".envelope");
   const letter = document.getElementById("letter");
   const lines = document.querySelectorAll(".line");
+  const hint = document.querySelector(".click-hint");
 
   // ① シール消える
   envelope.classList.add("open");
+
+    if (hint) {
+    hint.style.display = "none"; // ←ここ！
+  }
 
   // ② フタ開いたあとに手紙
   setTimeout(()=>{
@@ -933,7 +966,14 @@ function openLetter(){
       line.classList.add("show");
     }, 1600 + index * 1500); // ←ゆっくりにした
   });
+  const ending = document.querySelector(".ending");
+
+setTimeout(()=>{
+  ending.classList.add("show");
+}, 1600 + lines.length * 1500 + 1000);
 }
+
+
 </script>
 
 </body>
